@@ -1,0 +1,41 @@
+<div class="empty-cart-message" *ngIf="cart.length === 0">
+  <p>Sorry you cart is empty!</p>
+  <div>
+    <a style="width: 104px" routerLink="" class="btn btn-outline-success">Back</a>
+  </div>
+</div>
+
+<div class="cart-container" *ngIf="cart.length > 0">
+
+  <div class="cart-panel">
+    <div class="cart-item" *ngFor="let item of cart">
+      <img class="img" alt="..." src={{item.imageUrl}}>
+      <div class="cart-item-details">
+        <button style="text-align: right" type="button" class="close" (click)="removeCartItem(item.id)">
+          <span>x</span>
+        </button>
+        <p>{{item.name}}</p>
+        <p>${{item.price}}</p>
+        <p>Quantity: <input id="{{item.id}}" class="number-input" type="number" min="1" [defaultValue]="item.quantity" (change)="updateQuantity($event)"></p>
+      </div>
+    </div>
+    <h4>Total: ${{cartTotal}}</h4>
+  </div>
+
+  <div>
+    <h5>Payment & shipping details</h5>
+    <form #form="ngForm" (ngSubmit)="submitCustomerData()">
+      <p style="margin-bottom: 0; margin-top: 10px">Full name</p>
+      <input name="name" type="text" required minlength="3" placeholder="(minimum 3 characters)" [(ngModel)]="customer.name">
+      <p style="margin-bottom: 0; margin-top: 10px">Address</p>
+      <input name="address" type="text" required minlength="6" placeholder="(minimum 6 characters)" [(ngModel)]="customer.address">
+      <p style="margin-bottom: 0; margin-top: 10px">Credit card number</p>
+      <input name="creditCard" type="text" required minlength="16" maxlength="16" placeholder="(16-digit number)" [(ngModel)]="cardData">
+      <div style="margin-top: 20px">
+        <button class="btn btn-success" [disabled]="form.invalid">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

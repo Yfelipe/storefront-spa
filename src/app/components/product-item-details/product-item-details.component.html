@@ -1,0 +1,21 @@
+<div class="detail-container">
+  <img
+    src={{product.url}}
+    class="img"
+    alt="..."
+  />
+  <div class="detail-item">
+    <h5 >{{product.name}}</h5>
+    <p>${{product.price}}</p>
+    <p class="card-text">{{product.description}}</p>
+    <form (ngSubmit)="addItemToCart()">
+      <input name="productQuantity" class="select-input" type="number" id="quantity" min="1" [(ngModel)]="formQuantity">
+      <div style="margin-top: 20px; margin-bottom: 10px">
+        <button style="width: 104px" type="submit" class="btn btn-success">Add to cart</button>
+      </div>
+    </form>
+    <div>
+      <a style="width: 104px" routerLink="" class="btn btn-outline-success">Back</a>
+    </div>
+  </div>
+</div>
