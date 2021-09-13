@@ -36,11 +36,8 @@ export class CartComponent implements OnInit {
     this.getData();
   }
 
-  updateQuantity(e: any): void {
-    const productId = e.target.id;
-    const quantity = e.target.value;
-
-    this.cartService.updateCart(productId, quantity);
+  updateQuantity(value: number, id: number): void {
+    this.cartService.updateCart(id, value);
     this.getData();
   }
 

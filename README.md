@@ -1,6 +1,6 @@
 # StorefrontSpa
 
-This is a store built with Angular which allows you to view products, add/remove products to cart and complete your order.
+This is a store built with Angular that goes through the flow of an online shop with a simulated checkout. Please see below for current available features.
 
 ## Requirements: 
 
@@ -10,3 +10,11 @@ This is a store built with Angular which allows you to view products, add/remove
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+
+
+## Available features
+* Product display
+* Product details
+* Cart add/remove/alter functionality
+* Cart checkout
+* Confirmation screen with order details

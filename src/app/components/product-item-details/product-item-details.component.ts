@@ -20,11 +20,21 @@ export class ProductItemDetailsComponent implements OnInit {
 
   formQuantity: number = 1;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService) {
-    this.route.params.subscribe((params) => (this.product = this.productService.getProductById(parseInt(params.id))));
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService,
+    private cartService: CartService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.params.subscribe((params) =>
+      this.productService
+        .getProductList()
+        .subscribe(
+          (response) => (this.product = <Product>response.find((product) => product.id == parseInt(params.id)))
+        )
+    );
+  }
 
   addItemToCart(): void {
     this.cartService.addToCart({

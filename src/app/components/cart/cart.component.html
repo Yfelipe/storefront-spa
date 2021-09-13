@@ -8,7 +8,7 @@
 <div class="cart-container" *ngIf="cart.length > 0">
 
   <div class="cart-panel">
-    <div class="cart-item" *ngFor="let item of cart">
+    <div class="cart-item" *ngFor="let item of cart; index as i">
       <img class="img" alt="..." src={{item.imageUrl}}>
       <div class="cart-item-details">
         <button style="text-align: right" type="button" class="close" (click)="removeCartItem(item.id)">
@@ -16,7 +16,7 @@
         </button>
         <p>{{item.name}}</p>
         <p>${{item.price}}</p>
-        <p>Quantity: <input id="{{item.id}}" class="number-input" type="number" min="1" [defaultValue]="item.quantity" (change)="updateQuantity($event)"></p>
+        <p>Quantity: <input id="{{item.id}}" class="number-input" type="number" min="1" [(ngModel)]="cart[i].quantity" (ngModelChange)="updateQuantity($event, item.id)"></p>
       </div>
     </div>
     <h4>Total: ${{cartTotal}}</h4>
